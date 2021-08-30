@@ -4,7 +4,6 @@ import useNews from '../hooks/useNews'
 import Loading from './Loading';
 export default function Technology({ navigation }) {
     const [getBusiness,business] = useNews();
-    console.log(business);
     React.useEffect(() => {
         getBusiness()
     }, []);

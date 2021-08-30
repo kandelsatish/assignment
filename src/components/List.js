@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import Card from '../components/Card'
-export default function List({ data, navigation }) {
+export default function List({ data, navigation}) {
     const renderItem = ({ item }) => {
         return (
             <TouchableOpacity onPress={() => navigation.navigate("Details", { item: item })}>
@@ -26,6 +26,8 @@ export default function List({ data, navigation }) {
                 renderItem={renderItem}
                 scrollEnabled={true}
                 showsVerticalScrollIndicator={false}
+                style={{flexGrow:1}}
+                nestedScrollEnabled
             />
     )
 }

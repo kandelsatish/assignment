@@ -2,14 +2,15 @@ import React from 'react'
 import {
     View,
     Text,
-    ScrollView,
+    SafeAreaView,
     StyleSheet,
     useWindowDimensions,
     FlatList,
     TouchableOpacity,
     ImageBackground,
+    ScrollView,
 } from 'react-native'
-import {SplashScreen,Loading} from '../screens'
+import { SplashScreen, Loading } from '../screens'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import TabBar from '../navigation/TabBar'
 import useNews from '../hooks/useNews'
@@ -17,6 +18,7 @@ export default function Home({ navigation }) {
     const { height, width } = useWindowDimensions();
     const [getNews, treanding] = useNews();
     const conditionalHeight = treanding.length === 0 ? height : 0.5 * height;
+
     // header Section
     const renderHeader = () => {
         return (
@@ -75,15 +77,14 @@ export default function Home({ navigation }) {
 
     const renderTabBars = () => {
         return (
-            <ScrollView>
-                <View style={{
-                    width: width,
-                    height: conditionalHeight,
-                    padding: 10,
-                }}>
-                    <TabBar navigation={navigation} />
-                </View>
-            </ScrollView>
+            <View style={{
+                width: width,
+                height: conditionalHeight,
+                padding: 10,
+                flex: 1
+            }}>
+                <TabBar navigation={navigation} />
+            </View>
         )
     }
     React.useEffect(() => {
@@ -93,12 +94,15 @@ export default function Home({ navigation }) {
     if (treanding.length === 0) {
         return <SplashScreen />
     }
+    
     return (
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <SafeAreaView style={{ flex: 1 }}>
             {renderHeader()}
-            {renderTreanding()}
-            {renderTabBars()}
-        </ScrollView>
+            <ScrollView>
+                {renderTreanding()}
+                {renderTabBars()}
+            </ScrollView>
+        </SafeAreaView>
     )
 }
 const styles = StyleSheet.create({

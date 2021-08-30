@@ -1,5 +1,4 @@
 import React from 'react'
-import { FlatList, StyleSheet } from 'react-native'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import { Technology, Business, Sports, Detail } from '../screens'
 const Tab = createMaterialTopTabNavigator();
@@ -14,7 +13,7 @@ export default function TabBar() {
                 tabBarScrollEnabled: true,
                 tabBarPressColor: 'blue',
                 tabBarLabelStyle: { fontSize: 16, fontWeight: 'bold' },
-                tabBarItemStyle: { width: 150 },
+                tabBarItemStyle: { width: 135 },
                 tabBarStyle: { backgroundColor: '#fff', height: 50 }
             }}
         >
